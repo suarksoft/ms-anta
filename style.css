@@ -1,0 +1,589 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: #333;
+  color: #fff;
+  position: fixed; /* Navbar'ı ekrana sabitle */
+  top: 0; /* Üstte konumlandır */
+  left: 0; /* Soldan hizala */
+  width: 100%; /* Tüm genişliği kapla */
+  z-index: 1000; /* Diğer içeriklerin üstünde olsun */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.342); /* Hafif gölge ekle */
+}
+
+/* Diğer içeriklerin üst üste binmesini önlemek için, header boyutunu hesaba katın */
+body {
+  padding-top: 70px; /* Header yüksekliğine göre içerik başlangıcını ayarla */
+}
+/* Logo Alanı */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 60px;
+    margin-right: 10px;
+    border-radius: 40px;
+}
+
+.logo h1 {
+    font-size: 20px;
+}
+
+/* Menü Alanı */
+.menu {
+    display: flex;
+    gap: 20px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.menu a:hover {
+    background: #fff;
+    color: #333;
+}
+
+
+/* Hamburger Menü Stilleri */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: #fff;
+    border-radius: 2px;
+}
+
+/* Menü Mobilde Gizle */
+.menu {
+    display: flex;
+}
+
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: #333;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 10px 0;
+        z-index: 1000;
+    }
+
+    .menu.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .right-section {
+        display: none;
+    }
+}
+
+
+/* Ana container */
+.icon-link {
+  text-decoration: none;
+  color: #333;
+  font-size: 18px;
+  font-weight: 500;
+  transition: color 0.3s ease-in-out;
+}
+
+.icon-link:hover {
+  color: #25D366; /* Hover ile yazı rengini yeşil yapar */
+}
+
+.bi-whatsapp {
+  transition: transform 0.3s ease-in-out;
+}
+
+.icon-link:hover .bi-whatsapp {
+  transform: scale(1.2); /* Hover ile ikon büyür */
+}
+/* Ana container */
+.first {
+    position: relative; /* ::before için pozisyon ayarı */
+    background-image: url(./images/firstback.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 60vh; /* Ekran boyutuna göre yüksekliği ayarlar */
+    display: flex;
+    align-items: center; /* Dikey ortalama */
+    justify-content: flex-start; /* Sola hizalama */
+    padding-left: 5%; /* Sol boşluk */
+    color: white; /* Yazılar için varsayılan renk */
+    overflow: hidden; /* Gradyan taşmasını engeller */
+}
+
+/* Gradyan efekti */
+.first::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0)); /* Gradyan ayarı */
+    z-index: 1; /* Yazıların arkasında olmasını sağlar */
+}
+
+/* İçerik kutusu */
+.content-box {
+    position: relative; /* Gradyanın üzerinde görünmesi için */
+    max-width: 600px; /* İçeriğin genişliğini sınırlayın */
+    z-index: 2; /* Gradyanın üstünde */
+}
+
+/* "İletişime Geçin" Linki */
+.icon-link {
+    display: inline-block; /* Kutucuk yapısı */
+    background-color: #b4bb1fc7; /* Mavi bir arka plan */
+    color: white; /* Yazı rengi */
+    padding: 10px 20px; /* İç boşluk */
+    border-radius: 30px; /* Yuvarlatılmış köşeler */
+    font-size: 1.2rem; /* Yazı boyutu */
+    font-weight: bold; /* Kalın yazı */
+    text-decoration: none; /* Alt çizgi kaldırılır */
+    transition: all 0.3s ease; /* Hover animasyonu */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hafif gölge efekti */
+}
+
+/* İkon ve yazı hizalama */
+.icon-link svg {
+    margin-left: 8px; /* Yazıyla ikon arasında boşluk */
+    vertical-align: middle; /* İkon hizalama */
+    fill: white; /* İkon rengi */
+}
+
+/* Hover efekti */
+.icon-link:hover {
+    background-color: #28a14a; /* Daha koyu mavi */
+    color: white; /* Yazı rengi değişmez */
+    transform: translateY(-2px); /* Hafif yukarı kaldırma */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Gölge yoğunlaşır */
+}
+
+/* Aktiflik durumu */
+.icon-link:active {
+    transform: translateY(0); /* Aktifken eski konumuna döner */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Gölge azalır */
+}
+
+
+/* Başlık ve metin boyutları */
+.main-title {
+    font-size: 1.5rem; /* Varsayılan başlık boyutu */
+    margin-bottom: 20px;
+}
+
+.sub-title {
+    font-size: 1.3rem; /* Varsayılan alt başlık boyutu */
+    margin-bottom: 30px;
+}
+
+/* Responsive tasarım */
+@media (max-width: 1200px) {
+    .main-title {
+        font-size: 2.5rem;
+    }
+    .sub-title {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .first {
+        padding-left: 3%;
+    }
+    .main-title {
+        font-size: 2rem;
+    }
+    .sub-title {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .main-title {
+        font-size: 1.5rem;
+    }
+    .sub-title {
+        font-size: 0.9rem;
+    }
+}
+
+
+
+/* Ürün Kartları Genel */
+.product-card {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(7, 112, 66, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  /* Slider Container */sdcsdcdsc
+.slider-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 300px; /* Slider yüksekliği */
+}
+/* Slider Kartının Yüksekliği */
+.slider-card .slider-container {
+  height: 300px; /* Sadece slider içeren ürün kartının yüksekliğini ayarlar */
+}
+
+/* Slider İçindeki Resimlerin Yüksekliği */
+.slider-card .slider img {
+  height: 300px; /* Resimlerin yüksekliğini de eşitler */
+  object-fit: cover; /* Resimleri düzgün sığdırır */
+}
+
+/* Slider İçeriği */
+.slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Slider İçindeki Resimlere Hover Efekti */
+.slider img {
+  width: 100%;
+  flex-shrink: 0;
+  object-fit: cover;
+  height: 100%;
+  transition: transform 0.3s ease, filter 0.3s ease; /* Hover animasyonu */
+}
+
+/* Hover Durumu */
+.slider img:hover {
+  transform: scale(1.1); /* Hafif büyütme */
+  filter: brightness(1.1); /* Parlaklık efekti */
+}
+
+
+/* Slider Kontrolleri */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.slider-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.slider-btn.prev {
+  left: 10px;
+}
+
+.slider-btn.next {
+  right: 10px;
+}
+
+/* Slider Özellikli Kart ile Diğer Kartların Uyumunu Sağlama */
+.slider-card .product-image {
+  display: none; /* Slider olan kartta default resim kapatılır */
+}
+
+.slider-card .slider-container {
+  display: block; /* Slider gösterilir */
+}
+/* Ürün Kartı Genel Ayar */
+.product-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  overflow: hidden; /* Kart taşmalarını engeller */
+  box-shadow: 0 4px 8px rgba(7, 112, 66, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform-origin: center top; /* Büyümenin merkezini yukarıda tutar */
+  position: relative; /* Hover sırasında içeriğin düzgün kalmasını sağlar */
+}
+
+/* Hover Durumu */
+.product-card:hover {
+  transform: scale(1.05); /* Büyütme */
+  box-shadow: 0 8px 16px rgba(38, 96, 25, 0.2); /* Gölge efekti */
+  z-index: 10; /* Kartın diğer elemanların üstünde kalmasını sağlar */
+}
+
+/* Kart Gövdesi */
+.card-body {
+  position: relative;
+  z-index: 2; /* İçeriğin hover sırasında görünür kalmasını sağlar */
+  background: #fff; /* Arka planı beyaz tutar */
+  padding: 15px;
+  text-align: center;
+}
+
+/* Hover Durumunda Başlık Efekti */
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #25964b; /* Varsayılan renk */
+  transition: color 0.3s ease;
+}
+
+/* Hover Durumunda Kart Taşmasını Engelle */
+.product-card:hover .card-title {
+  color: #0f680f; /* Hover rengini değiştirir */
+}
+
+  /* Ürün Kartı Hover Durumu (Belirgin Etki) */
+.product-card:hover {
+  transform: scale(1.08); /* Daha belirgin büyütme */
+  box-shadow: 0 12px 24px rgba(38, 96, 25, 0.3); /* Daha yoğun gölge efekti */
+  background-color: #f0f8f5; /* Hafif yeşilimsi arka plan */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Arka plan geçişi */
+}
+
+/* Hover Durumunda Resim Efekti */
+.product-card:hover .product-image img {
+  transform: scale(1.15); /* Resimde daha belirgin büyütme */
+  filter: brightness(1.1); /* Daha parlak görünüm */
+  transition: transform 0.3s ease, filter 0.3s ease; /* Geçiş efekti */
+}
+
+/* Başlık (Ürün Adı) Rengini Ayarlamak İçin) */
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #25964b; /* Varsayılan yeşil renk */
+  transition: color 0.3s ease; /* Hover durumunda yumuşak geçiş */
+}
+
+/*kart başlıkları için ana renk */
+.product-card .card-title {
+  color: #0e8235; /* Varsayılan yeşil renk */
+}
+/* Hover Durumunda Başlık Rengi */
+.product-card:hover .card-title {
+  color: #d8e2d8; /* Daha koyu yeşil */
+}
+
+/* Alternatif Renk Tanımlama (Kolay Değişim için CSS Değişkeni) */
+:root {
+  --primary-title-color: #317548; /* Varsayılan renk */
+  --hover-title-color: #0f680f; /* Hover rengi */
+}
+
+/* Renkleri Değiştirilebilir Alan ile Uygulama */
+.card-title {
+  color: var(--primary-title-color);
+}
+
+.product-card:hover .card-title {
+  color: var(--hover-title-color);
+}
+  
+  /* Hover Durumunda Ürün Kartı */
+  .product-card:hover {
+    transform: scale(1.05); /* Hafif büyütme */
+    box-shadow: 0 8px 16px rgba(38, 96, 25, 0.2); /* Gölge efekti */
+  }
+  
+  /* Ürün Resmi */
+  .product-image {
+    width: 100%;
+    height: 300px; /* Sabit yükseklik */
+    overflow: hidden; /* Taşan görüntüyü kırpar */
+    position: relative; /* Resim yerleşimi için */
+  }
+  
+  .product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Resmi kırpmadan doldurur */
+    object-position: center; /* Resim ortalanır */
+  }
+  
+  /* Kart Gövdesi */
+  .card-body {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  /* Başlık */
+  .card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #25964b;
+  }
+  
+  /* Açıklama */
+  .card-text {
+    color: #555;
+    margin-bottom: 15px;
+  }
+  
+
+
+
+
+  
+  /* Genel Ayarlar */
+.featurette-heading {
+    font-size: 2rem; /* Varsayılan başlık boyutu */
+    
+  }
+
+
+  .featurette-heading .text-primary {
+    color: #38381e !important; /* Yeşil renk */
+  }
+
+  .featurette .lead {
+    color: #555; /* Daha okunaklı açık gri yazı rengi */
+  }
+  
+  /* Görsel Ayarları */
+  .featurette-image {
+    border-radius: 10px; /* Köşeleri yuvarlat */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Hafif gölge efekti */
+    max-height: 500px; /* Maksimum yükseklik */
+    object-fit: cover; /* Görselin düzgün görünmesini sağlar */
+  }
+  
+  /* Mobil Uyum */
+  @media (max-width: 768px) {
+    .featurette-heading {
+      font-size: 1.75rem; /* Mobilde başlığı küçült */
+      text-align: center; /* Metni ortala */
+    }
+  
+    .featurette .lead {
+      font-size: 1rem; /* Yazı boyutunu küçült */
+      text-align: center; /* Metni ortala */
+    }
+  
+    .featurette-image {
+      max-height: 300px; /* Mobilde görselin yüksekliğini küçült */
+      margin: 0 auto; /* Görseli ortala */
+    }
+  
+    .featurette {
+      flex-direction: column-reverse; /* Mobilde görseli metnin altına al */
+      text-align: center; /* Mobilde tüm içeriği ortala */
+    }
+  }
+
+
+
+/* Genel Footer Ayarları */
+/* Genel Footer Ayarları */
+footer {
+  background-color: #343a40; /* Koyu arka plan rengi */
+  color: #f8f9fa; /* Açık yazı rengi */
+  padding: 40px 0;
+}
+
+/* Başlık Stili */
+footer h5 {
+  color: #ffffff;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+/* Liste Stili */
+footer ul {
+  padding-left: 0;
+}
+
+footer ul li {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+footer a {
+  text-decoration: none;
+  color: #f8f9fa;
+  transition: color 0.3s ease-in-out;
+}
+
+footer a:hover {
+  color: #25D366; /* Hover durumunda yeşil renk */
+}
+
+/* Sosyal Medya İkonları */
+.social-icon {
+  display: inline-block;
+  font-size: 2rem;
+  color: #f8f9fa; /* İkon rengi */
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: scale(1.3); /* Büyütme efekti */
+  color: #e4405f; /* Instagram için pembe */
+}
+
+.social-icon:nth-child(2):hover {
+  color: #1877f2; /* Facebook için mavi */
+}
+
+/* Alt Çizgi */
+footer hr {
+  border-top: 1px solid #495057; /* Çizgi rengi */
+}
+
+/* Alt Kısım Yazı */
+footer p {
+  font-size: 0.9rem;
+  color: #adb5bd; /* Daha açık gri */
+}
+
+/* Responsive Ayarlar */
+@media (max-width: 768px) {
+  .social-icon {
+      font-size: 2.5rem; /* Mobilde ikonları büyüt */
+  }
+
+  footer h5 {
+      text-align: center;
+  }
+
+  footer ul, footer p {
+      text-align: center;
+  }
+}
