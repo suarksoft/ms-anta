@@ -24,17 +24,27 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-function prevSlide(button) {
-  const slider = button.parentElement.querySelector('.slider');
-  const slides = slider.querySelectorAll('img');
-  let currentIndex = parseInt(slider.dataset.index) || 0;
+document.addEventListener("DOMContentLoaded", function () {
+  const sliders = document.querySelectorAll(".slider");
 
-  // Kaydırmayı bir önceki resme ayarla
-  currentIndex = (currentIndex === 0) ? slides.length - 1 : currentIndex - 1;
+  sliders.forEach((slider) => {
+      let currentIndex = 0;
+      const images = slider.querySelectorAll("img");
+      const totalImages = images.length;
 
-  slider.style.transform = `translateX(-${currentIndex * 100}%)`;
-  slider.dataset.index = currentIndex;
-}
+      // Önceki Slide
+      slider.parentElement.querySelector(".prev").addEventListener("click", () => {
+          currentIndex = (currentIndex === 0) ? totalImages - 1 : currentIndex - 1;
+          slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+      });
+
+      // Sonraki Slide
+      slider.parentElement.querySelector(".next").addEventListener("click", () => {
+          currentIndex = (currentIndex === totalImages - 1) ? 0 : currentIndex + 1;
+          slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+      });
+  });
+});
 
 function nextSlide(button) {
   const slider = button.parentElement.querySelector('.slider');
@@ -47,3 +57,4 @@ function nextSlide(button) {
   slider.style.transform = `translateX(-${currentIndex * 100}%)`;
   slider.dataset.index = currentIndex;
 }
+
